@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workplace Safety Accordion</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #F2F2F2; /* Light background for the page */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+  }
+
+  .accordion-container {
+    width: 630px;
+    background-color: #FFFFFF; /* White background for the container */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .accordion-item {
+    border-bottom: 1px solid #C3ACE8; /* Light purple border between items */
+  }
+
+  .accordion-item:last-child {
+    border-bottom: none; /* No border for the last item */
+  }
+
+  .accordion-header {
+    background-color: #532A8C; /* Dark purple for header */
+    color: #FFFFFF;
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+
+  .accordion-header:hover {
+    background-color: #6C3D9A; /* Slightly lighter purple on hover */
+  }
+
+  .accordion-header.active {
+    background-color: #9D8ABB; /* Medium purple when active */
+  }
+
+  .accordion-header::after {
+    content: '+';
+    font-size: 1.5em;
+    transition: transform 0.3s ease;
+  }
+
+  .accordion-header.active::after {
+    content: '-';
+    transform: rotate(0deg); /* No rotation needed for '-' */
+  }
+
+  .accordion-content {
+    background-color: #F2F2F2; /* Light grey for content background */
+    color: #333;
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+  }
+
+  .accordion-content.show {
+    max-height: 200px; /* Adjust as needed based on content */
+    padding: 15px 20px;
+  }
+
+  .accordion-content p {
+    margin: 0 0 10px 0; /* Spacing for paragraphs within content */
+    line-height: 1.6;
+    color: #333;
+  }
+
+  .accordion-content p:last-child {
+    margin-bottom: 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="accordion-container">
+
+  <div class="accordion-item">
+    <div class="accordion-header">
+      Maintaining Good Housekeeping Practices
+    </div>
+    <div class="accordion-content">
+      <p>Maintaining **good housekeeping practices** is fundamental to workplace safety, especially for a **Dental Assistant**. It forms the bedrock of a safe and efficient environment, preventing accidents and promoting overall well-being.</p>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-header">
+      Identifying Risks and Implementing Controls
+    </div>
+    <div class="accordion-content">
+      <p>Good housekeeping involves actively **identifying risks** associated with poor hygiene and implementing effective **controls**. This includes recognizing potential hazards like contaminated surfaces, cluttered pathways, or improperly stored equipment that could compromise patient and staff safety.</p>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-header">
+      Effective Procedures for Hazard Control
+    </div>
+    <div class="accordion-content">
+      <p>**Effective procedures** help control or eliminate hazards, such as **slip and trip risks**, through **regular cleaning and maintenance**. This proactive approach ensures that the dental practice remains a safe and sterile environment, protecting everyone within it.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const accordionContent = header.nextElementSibling;
+      const isActive = header.classList.contains('active');
+
+      // Close all other open accordions
+      document.querySelectorAll('.accordion-header.active').forEach(activeHeader => {
+        if (activeHeader !== header) {
+          activeHeader.classList.remove('active');
+          activeHeader.nextElementSibling.classList.remove('show');
+        }
+      });
+
+      // Toggle the clicked accordion
+      if (!isActive) {
+        header.classList.add('active');
+        accordionContent.classList.add('show');
+      } else {
+        header.classList.remove('active');
+        accordionContent.classList.remove('show');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
